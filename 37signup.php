@@ -1,3 +1,6 @@
+<?php
+    require_once("37config.php"); //importe la base de donnée
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -13,7 +16,7 @@
             Formulaire de création de compte
             Adresse décomposée : Rue, num maison mit à part
         -->
-        <form name="formulaire_de_creation_de_compte" action="page_de_gestion_serveur.php" method="post"> <!-- !!! page_de_gestion_serveur.php n'existe pas encore -->
+        <form name="formulaire_de_creation_de_compte" action="37creation_compte.php" method="post">
             <label>
                 Nom d'utilisateur
                 <input name="username" type="text" required placeholder="JohnDoe125">
