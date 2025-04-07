@@ -6,7 +6,7 @@
     $password = $_POST["password"];
 
     if($email == "admin" && $password == "admin") { // Si l'utilisateur est admin
-        header("Location: 37admin.php"); // Redirige vers la page admin
+        header("Location: admin/37admin_client.php"); // Redirige vers la page admin client
         exit(); // Terminer le script
     }
     

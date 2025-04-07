@@ -7,7 +7,6 @@
     $surname = $_POST["surname"];
     $email = $_POST["email"];
     $street = $_POST["street"];
-    $housenumber = $_POST["housenumber"];
     $zipcode = $_POST["zipcode"];
     $town = $_POST["town"];
     $gsm = $_POST["gsm"];

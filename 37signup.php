@@ -38,10 +38,6 @@
                 <input name="street" type="text" required placeholder="Rue, Avenue ...">
             </label>
             <label>
-                Numéro de maison
-                <input name="housenumber" type="number" required placeholder="Numéro de maison">
-            </label>
-            <label>
                 Code postal
                 <input name="zipcode" type="number" required placeholder="Entrez un code postal à 4 chiffres">
             </label>
