@@ -2,8 +2,8 @@
     require ("37config.php"); //importe la base de donnée
     
     /* Récupère les données depuis les données stockées dans "POST" */
-    $email = $_POST["username"];
-    $password = $_POST["password"];
+    $email = mysqli_real_escape_string($conn, $_POST["username"]);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
     if($email == "admin" && $password == "admin") { // Si l'utilisateur est admin
         header("Location: admin/37admin_client.php"); // Redirige vers la page admin client

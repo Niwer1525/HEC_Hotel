@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang ="fr">
+<html lang="fr">
     <head>
         <title>Admin - Types chambres</title>
         <meta charset="utf-8">
@@ -9,6 +9,8 @@
         <?php
             require_once("37admin_navbar.php");
             require_once("../37config.php");
+
+            echo '<a href="./room_type/37insert_room_type.php">Ajouter</a>'; // Lien vers la page d'ajout de type de chambre
 
             $sql = "SELECT * FROM type_chambre";
             $result = mysqli_query($conn, $sql);
@@ -26,13 +28,15 @@
                     echo "<td>" . $row["id_type_chambre"] . "</td>";
                     echo "<td>" . $row["nom_type"] . "</td>";
                     echo "<td>" . $row["capacite"] . "</td>";
-                    echo "<td>" . $row["prix_nuit_pers"] . "</td>";
+                    echo "<td>" . $row["prix_nuit_pers"] . "</td>"; 
+                    echo '<a href="./room_type/37edit_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Editer</a>';
                     echo "</tr>";
                 }    
             }
             echo "</table>";
 
             mysqli_close($conn); // On ferme la connexion à la base de données
+            
         ?>
     </body>
 </html>
