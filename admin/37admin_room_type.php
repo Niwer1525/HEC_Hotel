@@ -28,15 +28,15 @@
                     echo "<td>" . $row["id_type_chambre"] . "</td>";
                     echo "<td>" . $row["nom_type"] . "</td>";
                     echo "<td>" . $row["capacite"] . "</td>";
-                    echo "<td>" . $row["prix_nuit_pers"] . "</td>"; 
+                    echo "<td>" . $row["prix_nuit_pers"] . "</td>";
                     echo '<a href="./room_type/37edit_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Editer</a>';
+                    echo '<a href="./room_type/37remove_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Supprimer</a>';
                     echo "</tr>";
-                }    
+                }
             }
             echo "</table>";
 
             mysqli_close($conn); // On ferme la connexion à la base de données
-            
         ?>
     </body>
 </html>
