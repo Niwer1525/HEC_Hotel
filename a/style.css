@@ -1,0 +1,106 @@
+.contenant{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	width:60%;
+}
+
+ul.menu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #caced9;
+	background-color: #caced9;
+}
+
+li.menu {
+	float: left;
+}
+
+li.menu a {
+	display: block;
+	color: #666;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li.menu a.active{
+	color: white;
+	background-color: #4CAF50;
+}
+
+li.menu a:hover{
+	background-color: #ddd
+}
+
+ul.menu_s{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: white;
+}
+
+li.menu_s {
+	float: right;
+}
+
+li.menu_s a {
+	display: block;
+	color: #666;
+	text-align: center;
+	padding: 8px 10px;
+	text-decoration: none;
+	background-color: #caced9;
+}
+
+li.menu_s a:hover{
+	background-color: #ddd
+}
+
+li.menu_s a.active{
+	color: white;
+	background-color: #4CAF50;
+}
+
+.alert{
+	color:red;
+}
+
+table.list{
+	border-collapse: collapse;
+	margin: 0 auto;
+	width: 100%;	
+}
+
+th{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #4CAF50;
+  color:white;
+}
+
+td.list{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr.list:hover {
+	background-color: #caced9;
+}
+
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: blue;
+}
+
+a:hover {
+  color: blue;
+}
