@@ -1,3 +1,4 @@
+<?php require_once('../37session_check.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>

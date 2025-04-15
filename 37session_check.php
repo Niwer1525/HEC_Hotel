@@ -8,12 +8,8 @@
 
     session_start(); // Démarre la session si elle n'est pas déjà démarrée
 
-    if (!isset($_SESSION[''])) {
+    if (!isset($_SESSION['user'])) {
         header("Location: index.php"); // Redirige vers la page de connexion (Index renvoit sur la page de connexion) si l'utilisateur est n'est pas connecté
         exit();
     }
-
-    /* 
-        TODO il faut aussi ajouter des vérifications sur la page de connexion pour ne pas forcer un utilisateur à se reconnecer (Admin/Client connecté)
-    */
 ?>
