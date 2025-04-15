@@ -12,7 +12,7 @@
 
             echo '<a href="./room/37insert_room.php">Ajouter</a>'; // Lien vers la page d'ajout de chambre
 
-            $sql = "SELECT * FROM chambre";
+            $sql = "SELECT * FROM chambre"; // Requête pour récupérer toutes les chambres
             $result = mysqli_query($conn, $sql);
 
             echo "<table>";
@@ -21,8 +21,8 @@
                     <th>Etage</th>
                     <th>Id Type chambre</th>
                 </tr>";
-            if($result) {
-                while($row = mysqli_fetch_array($result)) {
+            if($result) { // Si on a des données (Que la requête a réussi)
+                while($row = mysqli_fetch_array($result)) { // Tant qu'il y a des lignes à afficher
                     echo "<tr>";
                     echo "<td>" . $row["id_chambre"] . "</td>"; // UNIQUE (Auto-incrémenté)
                     echo "<td>" . $row["etage"] . "</td>";

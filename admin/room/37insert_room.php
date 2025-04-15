@@ -6,8 +6,9 @@
     </head>
     <body>
         <?php
-            include_once("../../37config.php");
+            include_once("../../37config.php"); // Inclusion du fichier de configuration pour la connexion à la base de données
 
+            /* Traitement des données */
             if(isset($_POST["floor"]) && isset($_POST["room_type"])) {
                 $floor = $_POST["floor"];
                 $room_type = $_POST["room_type"];
@@ -15,10 +16,11 @@
                 $sqlInsert = "INSERT INTO chambre (etage, id_type_chambre) VALUES ('$floor', '$room_type')";
                 $succeed = mysqli_query($conn, $sqlInsert);
     
-                if(!$succeed) {
+                if(!$succeed) { // Si la requête a échoué, on affiche un message d'erreur
                     die("Erreur de requête : " . mysqli_error($conn));
                 }
                 
+                /* Fermeture de la connexion à la base de données, redirection vers la page admin et terminaison du script */
                 mysqli_close($conn);
                 header("Location: ../37admin_room.php");
                 exit();
@@ -38,7 +40,8 @@
                         $result = mysqli_query($conn, $sqlGet);
                         if(!$result) die("Erreur de requête : " . mysqli_error($conn));
 
-                        while($row = mysqli_fetch_array($result)) {
+                        while($row = mysqli_fetch_array($result)) { // On parcourt les résultats de la requête
+                            // On affiche chaque type de chambre dans une option du select
                             echo '<option value="' . $row["id_type_chambre"] . '">' . $row["nom_type"] . "(" . $row["capacite"] . "p, " . $row["prix_nuit_pers"] . "€)" . "</option>";
                         }
                         

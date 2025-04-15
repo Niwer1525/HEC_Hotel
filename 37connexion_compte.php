@@ -6,6 +6,7 @@
     $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
     if($email == "admin" && $password == "admin") { // Si l'utilisateur est admin
+        $_SESSION['user'] = "admin"; // Met à jour la session avec simplement "admin"
         header("Location: admin/37admin_client.php"); // Redirige vers la page admin client
         exit(); // Terminer le script
     }
@@ -20,7 +21,8 @@
     mysqli_close($conn); // Fermer la connexion de la base de données AVANT de fermer le script (Et rediriger vers l'autre page) 
 
     if($succeed && mysqli_num_rows($succeed) > 0) { // Si la requête exist (Non null) et qu'il y a au moins une ligne de résultat
-        header("Location: 37user.php"); // Redirige vers la page de l'utilisateur
+        $_SESSION['user'] = hash('sha256', $email . $password); // Mise à jour de la session avec un hash de l'email et du mot de passe
+        header("Location: user/37user_booking.php"); // Redirige vers la page de l'utilisateur
         exit(); // Terminer le script
     }
 ?>

@@ -10,7 +10,7 @@
             require_once('37admin_navbar.php');
             require_once('../37config.php');
 
-            $sql = "SELECT * FROM reservation";
+            $sql = "SELECT * FROM reservation"; // Requête pour récupérer toutes les réservations
             $result = mysqli_query($conn, $sql);
 
             echo "<table>";

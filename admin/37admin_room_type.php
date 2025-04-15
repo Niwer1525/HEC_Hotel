@@ -12,7 +12,7 @@
 
             echo '<a href="./room_type/37insert_room_type.php">Ajouter</a>'; // Lien vers la page d'ajout de type de chambre
 
-            $sql = "SELECT * FROM type_chambre";
+            $sql = "SELECT * FROM type_chambre"; // Requête pour récupérer tous les types de chambre
             $result = mysqli_query($conn, $sql);
 
             echo "<table>";

@@ -1,5 +1,13 @@
 <?php
-    require_once("37config.php"); //importe la base de donnée
+    session_start(); // Démarre la session si elle n'est pas déjà démarrée
+
+    if(isset($_SESSION['user'])) { // Si la variable de session "user" est définie
+        if($_SESSION['user'] == "admin") { // Si l'utilisateur est un administrateur
+            header("Location: admin/37admin_client.php"); // Redirige vers la page d'administration (Liste des clients 37admin_client.php)
+        } else { // Sinon, si l'utilisateur est un client
+            header("Location: user/37user_booking.php"); // Redirige vers la page de l'utilisateur
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
