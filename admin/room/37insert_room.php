@@ -4,6 +4,7 @@
     <head>
         <title>Ajout d'une chambre</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <?php
@@ -50,6 +51,7 @@
                     ?>
                 </select>
                 <button type="submit">Ajouter</button>
+                <a href="../37admin_room.php">Annuler</a> <!-- Lien pour annuler l'ajout et revenir à la page admin -->
             </label>
         </form>
     </body>

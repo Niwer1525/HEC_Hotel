@@ -4,6 +4,7 @@
     <head>
         <title>Admin - Types chambres</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <h1>Types chambres</h1>

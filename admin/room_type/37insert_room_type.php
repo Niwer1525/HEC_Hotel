@@ -4,6 +4,7 @@
     <head>
         <title>Ici nous allons ajouter un type de chambre !!! (Truc de ouf je sais)</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <?php
@@ -45,6 +46,7 @@
             <button type="submit">
                 Créer le type de chambre
             </button>
+            <a href="../37admin_room_type.php">Annuler</a> <!-- On redirige vers la page d'administration des types de chambre -->
         </form>
     </body>
 </html>

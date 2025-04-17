@@ -4,6 +4,7 @@
     <head>
         <title>Admin - Statistiques</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <h1>Statistiques</h1>

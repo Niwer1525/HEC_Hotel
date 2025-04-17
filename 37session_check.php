@@ -8,8 +8,9 @@
 
     session_start(); // Démarre la session si elle n'est pas déjà démarrée
 
-    // if (!isset($_SESSION['user'])) {
-    //     header("Location: index.php"); // Redirige vers la page de connexion (Index renvoit sur la page de connexion) si l'utilisateur est n'est pas connecté
-    //     exit();
-    // }
+    if (!isset($_SESSION['user'])) {
+        $basePath = '/' . trim(explode('/', $_SERVER['PHP_SELF'])[1]); // Récupère le chemin de base du site
+        header("Location: $basePath/index.php"); // Redirige vers la page de connexion (Index renvoit sur la page de connexion) si l'utilisateur est n'est pas connecté
+        exit();
+    }
 ?>

@@ -14,6 +14,7 @@
     <head>
         <title>Connexion</title> <!-- Titre de l'onglet de la page -->
         <meta charset="utf-8"> <!-- Encodage -->
+        <link rel="stylesheet" href="37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <h1>Se connecter</h1>

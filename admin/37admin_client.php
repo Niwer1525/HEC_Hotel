@@ -4,6 +4,7 @@
     <head>
         <title>Admin - Clients</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <h1>Clients</h1>

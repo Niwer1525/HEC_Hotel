@@ -4,6 +4,7 @@
     <head>
         <title>Admin - Réservations</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <h1>Réservations</h1>
@@ -23,9 +24,10 @@
                 return isset($_GET["client_filtre"]) && $_GET["client_filtre"] !== ""; // Vérifie si le filtre client est défini et non vide
             }
 
-            // function select($id) { //TODO
-            //     echo $idClient == $id ? 'selected="selected"' : ''; // Vérifie si l'id client correspond à celui du filtre
-            // }
+            function selectOption($id) {
+                global $idClient; // Utilisation de la variable globale pour vérifier l'id client
+                return $idClient == $id ? 'selected' : ''; // Vérifie si l'id client correspond à celui du filtre
+            }
 
             $sql = "SELECT * FROM client";
             $result = mysqli_query($conn, $sql);
@@ -33,10 +35,11 @@
                 echo '<label>';
                     echo "Client : ";
                     echo '<select name="client_filtre">';
-                        echo '<option value="">Tous les clients</option>'; // Option pour tous les clients
+                        echo '<option value="" ' . selectOption('') . '>Tous les clients</option>'; // Option pour tous les clients
                         if($result) {
                             while($row = mysqli_fetch_array($result)) {
-                                echo '<option value="' . $row["id_client"] . '">' . $row["nom_client"] . ' ' . $row["prenom"] . ' (' . $row["id_client"] . ')</option>';
+                                $id = $row["id_client"]; // Récupération de l'id client (ici pour plus de lisibilité)
+                                echo '<option value="' . $id . '"' . selectOption($id) . '>' . $row["nom_client"] . ' ' . $row["prenom"] . ' (' . $id . ')</option>';
                             }
                         }
                     echo "</select>";
@@ -46,6 +49,7 @@
                     echo '<input name="should_filter_from_today" type="checkbox" ' . ($shouldFilterFromToday ? 'checked' : '') . '>'; // Case à cocher
                 echo '</label>';
                 echo '<button type=submit>Appliquer les filtres</button>';
+                echo '<a href="37admin_booking.php">Réinitialiser les filtres</a>'; // Ancre pour réinitialiser les filtres
             echo "</form>";
             
             /**
@@ -56,10 +60,17 @@
             /**
             * Affichage des lignes de réservation basée sur le filtre
             */
-
+                
             $sql = "SELECT * FROM reservation"; // Requête pour récupérer toutes les réservations
+
+            // Ajout de la jointure pour récupérer les informations sur la chambre et le client
+            $sql .= " LEFT JOIN chambre ON reservation.id_chambre = chambre.id_chambre";
+            $sql .= " LEFT JOIN type_chambre ON chambre.id_type_chambre = type_chambre.id_type_chambre";
+            $sql .= " LEFT JOIN client ON reservation.id_client = client.id_client";
+            
+            /* Conditions de filtrage */
             if(hasClientFilter()) { // Si on a un id client danss le filtre
-                $sql .= " WHERE id_client = " . $idClient; // On ajoute la condition pour le client
+                $sql .= " WHERE reservation.id_client = " . $idClient; // On ajoute la condition pour le client
             }
             if($shouldFilterFromToday) {
                 $today = date("Y-m-d");
@@ -69,11 +80,6 @@
                     $sql .= " WHERE DATEDIFF(date_debut, '" . $today . "') >= 0"; // Ajout de la condition pour la date de début avec DATEDIFF
                 }
             }
-
-            // Ajout de la jointure pour récupérer les informations sur la chambre et le client
-            $sql .= " LEFT JOIN chambre ON reservation.id_chambre = chambre.id_chambre";
-            $sql .= " LEFT JOIN type_chambre ON chambre.id_type_chambre = type_chambre.id_type_chambre";
-            $sql .= " LEFT JOIN client ON reservation.id_client = client.id_client";
 
             $result = mysqli_query($conn, $sql);
 

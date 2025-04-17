@@ -32,6 +32,7 @@
     <head>
         <title>Modification du type : <?php echo $nom_type ?></title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
         <?php
@@ -72,6 +73,7 @@
             <button type="submit">
                 Modifier
             </button>
+            <a href="../37admin_room_type.php">Annuler</a> <!-- On redirige vers la page d'administration des types de chambre -->
         </form>
     </body>
 </html>
