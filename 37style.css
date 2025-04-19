@@ -113,4 +113,15 @@ tr:hover .data_button { background-color: unset; }
 .data_button {
     border: unset;
     background-color: unset;
+    width: 10em;
+}
+.data_button>a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.data_button a>img {
+    width: 20px;
+    height: 20px;
+    color: var(--couleur_texte);
 }

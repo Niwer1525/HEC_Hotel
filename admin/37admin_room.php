@@ -21,7 +21,12 @@
                     echo '<th>ID Chambre</th>';
                     echo '<th>Etage</th>';
                     echo '<th>Id Type chambre</th>';
-                    echo '<th class="data_button"><a href="./room/37insert_room.php">Ajouter</a></th>';
+                    echo '<th class="data_button">
+                            <a href="./room/37insert_room.php">
+                                Ajouter
+                                <img src="../assets/plus.png" alt="Ajouter">
+                            </a>
+                        </th>';
                 echo '</tr>';
             if($result) { // Si on a des données (Que la requête a réussi)
                 while($row = mysqli_fetch_array($result)) { // Tant qu'il y a des lignes à afficher
@@ -29,7 +34,12 @@
                     echo "<td>" . $row["id_chambre"] . "</td>"; // UNIQUE (Auto-incrémenté)
                     echo "<td>" . $row["etage"] . "</td>";
                     echo "<td>" . $row["id_type_chambre"] . "</td>";
-                    echo '<td class="data_button"><a href="./room/37edit_room.php?id_chambre=' . $row["id_chambre"] . '">Editer</a></td>';
+                    echo '<td class="data_button">
+                        <a href="./room/37edit_room.php?id_chambre=' . $row["id_chambre"] . '">
+                            Editer
+                            <img src="../assets/pen.png" alt="Editer">
+                        </a>
+                    </td>';
                     echo "</tr>";
                 }
             }

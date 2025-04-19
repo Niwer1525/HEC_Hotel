@@ -1,8 +1,8 @@
 <ul>
     <li>
-        <a href="37user_booking.php">Mes réservations</a>
+        <a href="37user_booking.php" <?php if($page == "user_booking") echo 'class="active"'; ?>>Mes réservations</a>
     </li>
     <li>
-        <a href="../37disconnect.php">Se Déconnecter</a>
+        <a href="../37disconnect.php" class="danger">Se Déconnecter</a>
     </li>
 </ul>

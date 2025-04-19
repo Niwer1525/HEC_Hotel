@@ -22,7 +22,12 @@
                 echo "<th>Nom Type</th>";
                 echo "<th>Capacité</th>";
                 echo "<th>Prix d'une nuit par personne</th>";
-                echo '<th class="data_button"><a href="./room_type/37insert_room_type.php">Ajouter</a></th>'; // Lien vers la page d'ajout de type de chambre
+                echo '<th class="data_button">
+                        <a href="./room_type/37insert_room_type.php">
+                            Ajouter
+                            <img src="../assets/plus.png" alt="Ajouter">
+                        </a>
+                    </th>'; // Lien vers la page d'ajout de type de chambre
             echo "</tr>";
             if($result) { // Si on a des données (Que la requête a réussi)
                 while($row = mysqli_fetch_array($result)) { // Tant qu'il y a des lignes à afficher
@@ -31,8 +36,18 @@
                     echo "<td>" . $row["nom_type"] . "</td>";
                     echo "<td>" . $row["capacite"] . "</td>";
                     echo "<td>" . $row["prix_nuit_pers"] . "</td>";
-                    echo '<td class="data_button"><a href="./room_type/37edit_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Editer</a></td>';
-                    echo '<td class="data_button"><a class="danger" href="./room_type/37remove_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Supprimer</a></td>';
+                    echo '<td class="data_button">
+                        <a href="./room_type/37edit_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">
+                            Editer
+                            <img src="../assets/pen.png" alt="Editer">
+                        </a>
+                    </td>';
+                    echo '<td class="data_button">
+                        <a class="danger" href="./room_type/37remove_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">
+                            Supprimer
+                            <img src="../assets/trash.png" alt="Supprimer">
+                        </a>
+                    </td>';
                     echo "</tr>";
                 }
             }

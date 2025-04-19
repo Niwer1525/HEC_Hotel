@@ -7,9 +7,10 @@
         <link rel="stylesheet" href="../37style.css"> <!-- Ajout du fichier CSS -->
     </head>
     <body>
-        <?php require_once '37user_navbar.php'; ?> <!-- Menu de navigation -->
         <h2>Mes réservations</h2>
         <?php
+            $page = "user_booking"; // Page courante
+            require_once '37user_navbar.php'; // Menu de navigation
             require_once '../37config.php'; // Connexion à la base de données
 
             // Récupérer l'id du client connecté via la session
