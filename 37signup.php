@@ -19,6 +19,7 @@
     <body>
         <h1>S'enregistrer/Créer un compte</h1>
         <?php
+            $page = "signup";
             require_once("37navbar.php"); //importe la barre de navigation de 37navbar.php
         ?>
         <!--

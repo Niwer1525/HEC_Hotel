@@ -9,6 +9,7 @@
     <body>
         <h1>Réservations</h1>
         <?php
+            $page = "admin_booking"; // Page courante
             require_once('37admin_navbar.php');
             require_once('../37config.php');
 

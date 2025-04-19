@@ -9,10 +9,9 @@
     <body>
         <h1>Types chambres</h1>
         <?php
+            $page = "admin_room_type"; // Page courante
             require_once("37admin_navbar.php");
             require_once("../37config.php");
-
-            echo '<a href="./room_type/37insert_room_type.php">Ajouter</a>'; // Lien vers la page d'ajout de type de chambre
 
             $sql = "SELECT * FROM type_chambre"; // Requête pour récupérer tous les types de chambre
             $result = mysqli_query($conn, $sql);
@@ -23,6 +22,7 @@
                 echo "<th>Nom Type</th>";
                 echo "<th>Capacité</th>";
                 echo "<th>Prix d'une nuit par personne</th>";
+                echo '<th class="data_button"><a href="./room_type/37insert_room_type.php">Ajouter</a></th>'; // Lien vers la page d'ajout de type de chambre
             echo "</tr>";
             if($result) { // Si on a des données (Que la requête a réussi)
                 while($row = mysqli_fetch_array($result)) { // Tant qu'il y a des lignes à afficher
@@ -31,8 +31,8 @@
                     echo "<td>" . $row["nom_type"] . "</td>";
                     echo "<td>" . $row["capacite"] . "</td>";
                     echo "<td>" . $row["prix_nuit_pers"] . "</td>";
-                    echo '<a href="./room_type/37edit_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Editer</a>';
-                    echo '<a href="./room_type/37remove_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Supprimer</a>';
+                    echo '<td class="data_button"><a href="./room_type/37edit_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Editer</a></td>';
+                    echo '<td class="data_button"><a class="danger" href="./room_type/37remove_room_type.php?id_type_chambre=' . $row["id_type_chambre"] . '">Supprimer</a></td>';
                     echo "</tr>";
                 }
             }

@@ -9,6 +9,7 @@
     <body>
         <h1>Statistiques</h1>
         <?php
+            $page = "admin_stats"; // Page courante
             require_once('37admin_navbar.php');
             require_once('../37config.php');
 

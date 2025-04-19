@@ -9,6 +9,7 @@
     <body>
         <h1>Clients</h1>
         <?php
+            $page = "admin_client"; // Page courante
             require_once("37admin_navbar.php");
             require_once("../37config.php");
 

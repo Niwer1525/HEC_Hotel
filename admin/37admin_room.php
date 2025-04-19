@@ -9,27 +9,27 @@
     <body>
         <h1>Chambres</h1>
         <?php
+            $page = "admin_room"; // Page courante
             require_once('37admin_navbar.php');
             require_once('../37config.php');
-
-            echo '<a href="./room/37insert_room.php">Ajouter</a>'; // Lien vers la page d'ajout de chambre
 
             $sql = "SELECT * FROM chambre"; // Requête pour récupérer toutes les chambres
             $result = mysqli_query($conn, $sql);
 
             echo "<table>";
-            echo "<tr>
-                    <th>ID Chambre</th>
-                    <th>Etage</th>
-                    <th>Id Type chambre</th>
-                </tr>";
+            echo '<tr>';
+                    echo '<th>ID Chambre</th>';
+                    echo '<th>Etage</th>';
+                    echo '<th>Id Type chambre</th>';
+                    echo '<th class="data_button"><a href="./room/37insert_room.php">Ajouter</a></th>';
+                echo '</tr>';
             if($result) { // Si on a des données (Que la requête a réussi)
                 while($row = mysqli_fetch_array($result)) { // Tant qu'il y a des lignes à afficher
                     echo "<tr>";
                     echo "<td>" . $row["id_chambre"] . "</td>"; // UNIQUE (Auto-incrémenté)
                     echo "<td>" . $row["etage"] . "</td>";
                     echo "<td>" . $row["id_type_chambre"] . "</td>";
-                    echo '<a href="./room/37edit_room.php?id_chambre=' . $row["id_chambre"] . '">Editer</a>';
+                    echo '<td class="data_button"><a href="./room/37edit_room.php?id_chambre=' . $row["id_chambre"] . '">Editer</a></td>';
                     echo "</tr>";
                 }
             }

@@ -1,0 +1,116 @@
+:root {
+    --danger_red: rgb(136, 18, 18);
+    --border_radius: 10px;
+    --couleur_primaire: rgb(24, 24, 24);
+    --couleur_texte: white;
+    --couleur_secondaire: rgb(37, 37, 37);
+    --couleur_action: rgb(172, 95, 7);
+}
+
+body {
+    background-color: var(--couleur_primaire);
+    color:var(--couleur_texte);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    margin-bottom: 5rem;
+}
+
+a {
+    color: var(--couleur_texte);
+    text-decoration: none;
+    transition: 0.2s;
+
+    border: 2px solid var(--couleur_action);
+    border-radius: var(--border_radius);
+
+    margin: 5px;
+    padding: 5px 20px;
+}
+a:hover {
+    color: var(--couleur_action);
+    transition: 0.2s;
+}
+.active {
+    background-color: var(--couleur_action);
+    color: var(--couleur_texte);
+}
+.active:hover {
+    color: unset;
+}
+.danger {
+    border-color: var(--danger_red);
+    transition: 0.2s;
+}
+.danger:hover {
+    color: var(--danger_red);
+    transition: 0.2s;
+}
+
+/* Formulaires */
+form {
+    width: 50%;
+    text-align: center;
+    background-color: var(--couleur_secondaire);
+    border-radius: var(--border_radius);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 15px;
+    
+}
+label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+input {
+    width: 40%;
+    text-align: center;
+}
+button {
+    width: 20%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* Table */
+table {
+    width: 50%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 2px solid var(--couleur_action);
+    padding: 10px;
+    text-align: center;
+}
+th { background-color: var(--couleur_action); }
+td {
+    background-color: var(--couleur_secondaire);
+    transition: 0.2s;
+}
+tr:nth-child(even) td { /* Va colorier une ligne sur 2 dans une autre couleur */
+    background-color: var(--couleur_primaire);
+    color: var(--couleur_texte);
+}
+tr:hover td {
+    background-color: var(--couleur_action);
+    transition: 0.2s;
+}
+tr:hover .data_button { background-color: unset; }
+.data_button {
+    border: unset;
+    background-color: unset;
+}
