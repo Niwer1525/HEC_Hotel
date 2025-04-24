@@ -54,6 +54,16 @@ a:hover {
     color: var(--danger_red);
     transition: 0.2s;
 }
+.booking_filter {
+    margin-bottom: 5rem;
+    flex-direction: row;
+    
+}
+.booking_filter label{
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
 
 /* Formulaires */
 form {
@@ -76,14 +86,44 @@ label {
     margin-top: 15px;
     margin-bottom: 15px;
 }
-input {
+input, select {
     width: 40%;
     text-align: center;
+
+    color: var(--couleur_texte);
+    border-radius: var(--border_radius);
+    background-color: var(--couleur_primaire);
+    border: none;
+
+    margin-top: 5px;
+    padding: 10px 0px;
+
+    transition: 0.2s;
+}
+input:focus, select:focus {
+    outline: 2px solid var(--couleur_action);
+    transition: 0.2s;
+}
+input:hover, select:hover {
+    scale: 1.05;
+    transition: 0.2s;
 }
 button {
     width: 20%;
     margin-top: 15px;
     margin-bottom: 15px;
+    border-radius: var(--border_radius);
+    background-color: var(--couleur_primaire);
+    border: none;
+    color: var(--couleur_texte);
+    padding: 10px 0px;
+
+}
+button:hover{
+    background-color: var(--couleur_action);
+    color: var(--couleur_texte);
+    transition: 0.2s;
+    scale: 1.05;
 }
 
 /* Table */

@@ -15,11 +15,17 @@
 
             /**
              * Ajout du formulaire de filtre pour les réservations
-             * N.B : Le "?" est un opérateur ternaire. Il se construit comme suit : condition ? valeurSiVrai : valeurSiFaux
              */
 
-            $idClient = isset($_GET["client_filtre"]) ? $_GET["client_filtre"] : null;
-            $shouldFilterFromToday = isset($_GET["should_filter_from_today"]) ? $_GET["should_filter_from_today"] : false;
+            $idClient = null;
+            if(isset($_GET["client_filtre"])){
+                $idClient = $_GET["client_filtre"]; // Récupération de l'id client du filtre
+            }
+            
+            $shouldFilterFromToday = false;
+            if(isset($_GET["should_filter_from_today"]))  {
+                $shouldFilterFromToday = $_GET["should_filter_from_today"];
+            }
 
             function hasClientFilter() {
                 return isset($_GET["client_filtre"]) && $_GET["client_filtre"] !== ""; // Vérifie si le filtre client est défini et non vide
@@ -32,7 +38,7 @@
 
             $sql = "SELECT * FROM client";
             $result = mysqli_query($conn, $sql);
-            echo '<form name="filtre" action="37admin_booking.php" method="GET">';
+            echo '<form name="filtre" action="37admin_booking.php" method="GET" class="booking_filter">';
                 echo '<label>';
                     echo "Client : ";
                     echo '<select name="client_filtre">';
@@ -47,7 +53,10 @@
                 echo '</label>';
                 echo '<label>';
                     echo "Date actuelle : ";
-                    echo '<input name="should_filter_from_today" type="checkbox" ' . ($shouldFilterFromToday ? 'checked' : '') . '>'; // Case à cocher
+                    echo '<input name="should_filter_from_today" type="checkbox" '; 
+                    if($shouldFilterFromToday) 
+                        echo 'checked'; 
+                    echo '>'; // Case à cocher
                 echo '</label>';
                 echo '<button type=submit>Appliquer les filtres</button>';
                 echo '<a href="37admin_booking.php">Réinitialiser les filtres</a>'; // Ancre pour réinitialiser les filtres
@@ -65,20 +74,20 @@
             $sql = "SELECT * FROM reservation"; // Requête pour récupérer toutes les réservations
 
             // Ajout de la jointure pour récupérer les informations sur la chambre et le client
-            $sql .= " LEFT JOIN chambre ON reservation.id_chambre = chambre.id_chambre";
-            $sql .= " LEFT JOIN type_chambre ON chambre.id_type_chambre = type_chambre.id_type_chambre";
-            $sql .= " LEFT JOIN client ON reservation.id_client = client.id_client";
+            $sql = $sql . " LEFT JOIN chambre ON reservation.id_chambre = chambre.id_chambre";
+            $sql = $sql . " LEFT JOIN type_chambre ON chambre.id_type_chambre = type_chambre.id_type_chambre";
+            $sql = $sql . " LEFT JOIN client ON reservation.id_client = client.id_client";
             
             /* Conditions de filtrage */
             if(hasClientFilter()) { // Si on a un id client danss le filtre
-                $sql .= " WHERE reservation.id_client = " . $idClient; // On ajoute la condition pour le client
+                $sql = $sql . " WHERE reservation.id_client = " . $idClient; // On ajoute la condition pour le client
             }
             if($shouldFilterFromToday) {
                 $today = date("Y-m-d");
                 if(hasClientFilter()) { // Si on a un id client dans le filtre
-                    $sql .= " AND DATEDIFF(date_debut, '" . $today . "') >= 0"; // Utilisation de DATEDIFF pour vérifier la différence de date
+                    $sql = $sql . " AND DATEDIFF(date_debut, '" . $today . "') >= 0"; // Utilisation de DATEDIFF pour vérifier la différence de date
                 } else { // Si on n'a pas d'id client dans le filtre
-                    $sql .= " WHERE DATEDIFF(date_debut, '" . $today . "') >= 0"; // Ajout de la condition pour la date de début avec DATEDIFF
+                    $sql = $sql . " WHERE DATEDIFF(date_debut, '" . $today . "') >= 0"; // Ajout de la condition pour la date de début avec DATEDIFF
                 }
             }
 
