@@ -1,0 +1,97 @@
+<?php
+	// Etape 1 : initialiser la session
+	session_start();
+	// Etape 2 : vérifier si l'utilisateur s'est déjà authentifié. Le renvoyer au login sinon.
+	if (!isset($_SESSION['id_client'])){
+		header('Location: 44loginclient.php');
+		exit();
+	}	
+	require_once '44configclient.php';
+	$id_client = $_SESSION['id_client'];	
+	// Etape 3 : vérifier si la connexion à la base de données fonctionne
+	if(!$conn) {
+		die("Echec de la connexion à la base de donées : " .mysqli_connect_error());
+	}
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mes réservations</title>
+
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="./44style.css">
+</head>
+<body>
+	<div class="contenant"><!-- début contenant -->			
+		<div class="menu"> <!-- début menu -->
+			<ul class="menu"> <!-- Menu de gestion-->
+				<li class="menu"><a class="active" href="44reservationsclient.php">Mes réservations</a></li>
+				<li class="menu"><a class="" href ="44compteclient.php">Compte</a></li>	
+				<li class="menu"><a class="" href ="44logoutclient.php">Se déconnecter</a></li>			
+			</ul>
+			<br><br> 		
+		</div> <!-- fin menu -->	
+		<div> <!-- début contenu -->
+			<h2 align ="center">Créer une réservation</h2>			
+			
+			<form name="signup" action="44creationclient.php"  method="post">
+				<table align="center" border=0>
+					<tr><td align=right> Date de début du séjour</td><td><input type="date" name="date_debut" required></td></tr> 
+					<tr><td align=right> Date de fin du séjour </td><td><input type="date" name="date_fin" required></td></tr>
+					<tr><td align=right> Nombre de personne </td><td><input type="Number" name="nbre_pers" required></td></tr>
+					<tr><td align=right> Type de chambre </td>
+					<td><select name="id_chambre" required>
+						<option value=""> ---- Choisissez une chambre </option>
+						<?php 
+						    $sql = "SELECT id_chambre, nom_type FROM chambre, type_chambre";
+                			$result = mysqli_query($conn, $sql);
+                			while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<option value="'.$row['id_type_chambre'].'">'.$row['nom_type'].'</option>'; //ajouter $row['id_chambre'] pour l'id de la chambre ici
+                		}
+						?>
+					</select>
+					</td>
+
+					</tr>
+					
+					<tr><td align=right><input type="submit" name="sub_btn" value="Créer"></td><td><input type="reset" name="res_btn" value="Réinitialiser"></td></tr>
+				</table>
+				<?php if (isset($id_reservation)) 
+				{ 
+					?>
+    			<div>
+        		Réservation créée avec succès !<br>
+       			Votre ID de réservation est : <b><?= $id_reservation ?></b>
+    			</div>
+				<?php 
+				}
+					 ?>
+			</form>
+			<?php
+		
+			?>
+			<?php
+				// Etape 2 : Test si l'utilisateur a cliqué sur le bouton Créer (au moins 1x)
+				if (isset($_POST['sub_btn'])){ 
+					// Récupérer les données du formulaire
+					$date_debut= $_POST["date_debut"];
+					$date_fin= $_POST["date_fin"];
+					$nbre_pers= $_POST["nbre_pers"];
+					$id_chambre= $_POST["id_chambre"];
+					
+					$sql = "INSERT INTO reservation (date_debut, date_fin, nbre_pers, id_client, id_chambre) 
+					VALUES ('$date_debut', '$date_fin','$nbre_pers','$id_client','$id_chambre')";
+					$result = mysqli_query($conn,$sql);	
+					if ($result){
+						$id_reservation = mysqli_insert_id($conn); 
+						echo "<center>Réservation créée avec succès !<br>Votre ID de réservation est : <b>$id_reservation</b></center>";		
+					}
+					else{
+						echo '<center>'.mysqli_error($conn).'</center> <br>';
+					}
+					//déconnexion du serveur
+					mysqli_close($conn);
+				}
+			
+			?>
