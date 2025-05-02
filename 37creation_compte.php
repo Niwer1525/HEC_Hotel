@@ -2,7 +2,6 @@
     require_once("37config.php"); //importe la base de donnée
 
     /* Récupère les données depuis les données stockée dans "POST" */
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
     $surname = mysqli_real_escape_string($conn, $_POST["surname"]);
     $email = mysqli_real_escape_string($conn, $_POST["email"]);

@@ -28,10 +28,6 @@
         -->
         <form name="formulaire_de_creation_de_compte" action="37creation_compte.php" method="post">
             <label>
-                Nom d'utilisateur
-                <input name="username" type="text" required placeholder="JohnDoe125">
-            </label>
-            <label>
                 Nom
                 <input name="name" type="text" required placeholder="Doe">
             </label>
@@ -44,7 +40,7 @@
                 <input name="email" type="email" required placeholder="JohnDoe@dayrep.com">
             </label>
             <label>
-                Adresse
+                Rue
                 <input name="street" type="text" required placeholder="Rue, Avenue ...">
             </label>
             <label>
