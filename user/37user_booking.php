@@ -39,6 +39,9 @@
                     <th>Capacité</th>
                     <th>Nombre de personnes</th>
                     <th>Total (€)</th>
+                    <th class="data_button">
+                        <a href="./booking/37insert_booking.php">Réserver</a>
+                    </th>
                 </tr>';
             while ($row = mysqli_fetch_array($result)) {
                 $total = $row['prix_nuit_pers'] * $row['nbre_pers'] * $row['nb_nuits'];
@@ -51,6 +54,12 @@
                 echo '<td>'.$row['capacite'].'</td>';
                 echo '<td>'.$row['nbre_pers'].'</td>';
                 echo '<td>'.number_format($total, 2, ',', ' ').'</td>';
+                echo '<td class="data_button">
+                        <a class="danger" href="./booking/37remove_booking.php?id_reservation=' . $row["id_reservation"] . '">
+                            Supprimer
+                            <img src="../assets/trash.png" alt="Supprimer">
+                        </a>
+                    </td>';
                 echo '</tr>';
             }
             echo '</table>';
