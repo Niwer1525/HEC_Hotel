@@ -67,6 +67,7 @@
                     FROM reservation r
                     JOIN chambre c ON r.id_chambre = c.id_chambre
                     JOIN type_chambre t ON c.id_type_chambre = t.id_type_chambre
+                    GROUP BY t.nom_type
                 ";
                 $result = mysqli_query($conn, $sql);
 
